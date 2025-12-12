@@ -1,11 +1,11 @@
-# 🧠 Software Defect Prediction Using Machine Learning
+🧠 Software Defect Prediction Using Machine Learning
 
 This project predicts software defects using various Machine Learning algorithms.  
 It helps improve software quality by identifying defective modules early in the development lifecycle.
 
 ---
 
-## 🚀 Project Overview
+🚀 Project Overview
 
 Software defect prediction (SDP) uses historical software metrics to automatically classify modules as **defective** or **non-defective**.  
 This project includes:
@@ -18,7 +18,7 @@ This project includes:
 
 ---
 
-## 📁 Project Structure
+📁 Project Structure
 
 project/
 │── code/
@@ -38,7 +38,7 @@ project/
 
 ---
 
-## 🧪 Machine Learning Models Used
+🧪 Machine Learning Models Used
 
 - Logistic Regression  
 - Random Forest  
@@ -53,14 +53,14 @@ ML_model.pkl
 
 ---
 
-## ⚙️ Requirements
+⚙️ Requirements
 
 Install the required packages:
 
 pip install -r requirements.txt
 
 
-### Main libraries:
+Main libraries:
 - Python 3.9+
 - Django
 - NumPy
@@ -69,32 +69,6 @@ pip install -r requirements.txt
 - Joblib
 
 ---
-
-## ▶️ How to Run the Project
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/likhithamuddala/software-defect-prediction.git
-Navigate into folder
-
-```bash
-
-cd software-defect-prediction/code
-Migrate database
-
-bash
-
-python manage.py migrate
-Run server
-
-bash
-
-python manage.py runserver
-Open in browser:
-
-cpp
-
-http://127.0.0.1:8000/
 
 📊 Features
 Admin & User login
@@ -117,5 +91,29 @@ SVM	92%
 Decision Tree	89%
 
 (Random Forest performed the best)
+
+## ▶️ How to Run the Project
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/likhithamuddala/software-defect-prediction.git
+Navigate into folder
+
+```bash
+
+cd software-defect-prediction/code
+Migrate database
+
+python manage.py migrate
+Run server
+
+python manage.py runserver
+Open in browser:
+
+cpp
+
+http://127.0.0.1:8000/
+
+
 
 
