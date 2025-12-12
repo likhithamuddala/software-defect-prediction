@@ -78,22 +78,22 @@ pip install -r requirements.txt
 Navigate into folder
 
 bash
-Copy code
+
 cd software-defect-prediction/code
 Migrate database
 
 bash
-Copy code
+
 python manage.py migrate
 Run server
 
 bash
-Copy code
+
 python manage.py runserver
 Open in browser:
 
 cpp
-Copy code
+
 http://127.0.0.1:8000/
 
 📊 Features
