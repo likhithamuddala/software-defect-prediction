@@ -77,7 +77,7 @@ pip install -r requirements.txt
    git clone https://github.com/likhithamuddala/software-defect-prediction.git
 Navigate into folder
 
-bash
+```bash
 
 cd software-defect-prediction/code
 Migrate database
