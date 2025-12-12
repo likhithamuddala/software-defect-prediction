@@ -1,0 +1,141 @@
+{% extends 'users/userbase.html' %}
+
+{% block contents %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('table').DataTable({
+            "pageLength": 50
+        });
+    });
+</script>
+
+<style>
+    body {
+        background-color: #f8f9fa; /* Light gray background */
+        color: #343a40; /* Dark text color */
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    h2.section-title {
+        font-size: 24px;
+        color: red; 
+    }
+
+    .row {
+        background-color: #fff; 
+        border: 1px solid #dee2e6;
+        border-radius: 5px; 
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+
+    h3 {
+        color: #6c757d;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th, td {
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #007bff; 
+        color: #fff; 
+    }
+</style>
+
+<div class="section-header">
+    <h2 class="section-title wow fadeInDown"><strong>Machine Learning Results</strong></h2>
+</div>
+
+<!-- Naive Bayes Section -->
+<div class="row">
+    <h3>Naive Bayes</h3>
+    <table>
+        <tr>
+            <th>Confusion</th>
+            <th>Recall</th>
+            <th>Precision</th>
+            <th>Accuracy</th>
+        </tr>
+        <tr>
+            <td>{{ nb_cv_res }}</td>
+            <td>{{ nb_rec }}</td>
+            <td>{{ nb_prec }}</td>
+            <td>{{ nb_acc }}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- Random Forest Section -->
+<div class="row">
+    <h3>Random Forest</h3>
+    <table>
+        <tr>
+            <th>Confusion</th>
+            <th>Recall</th>
+            <th>Precision</th>
+            <th>Accuracy</th>
+        </tr>
+        <tr>
+            <td>{{ rf_cv }}</td>
+            <td>{{ rf_recall }}</td>
+            <td>{{ rf_precision }}</td>
+            <td>{{ rf_accuracy }}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- SVM Section -->
+<div class="row">
+    <h3>SVM</h3>
+    <table>
+        <tr>
+            <th>Confusion</th>
+            <th>Recall</th>
+            <th>Precision</th>
+            <th>Accuracy</th>
+        </tr>
+        <tr>
+            <td>{{ svm_cv_results }}</td>
+            <td>{{ svm_recall }}</td>
+            <td>{{ svm_precision }}</td>
+            <td>{{ svm_accuracy }}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- PCA Section -->
+<div class="row">
+    <h3>PCA</h3>
+    <table>
+        <tr>
+            <th>Confusion</th>
+            <th>Recall</th>
+            <th>Precision</th>
+            <th>Accuracy</th>
+        </tr>
+        <tr>
+            <td>{{ pca_cv_results }}</td>
+            <td>{{ pca_recall }}</td>
+            <td>{{ pca_precision }}</td>
+            <td>{{ pca_accuracy }}</td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}

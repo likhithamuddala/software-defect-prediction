@@ -1,0 +1,208 @@
+{% extends 'users/userbase.html' %}
+{% block contents %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* Styling for input fields */
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+.formDiv {
+    margin: 0 200px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    text-align: left;
+}
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover {
+    color: red;
+}
+.ok-button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+</style>
+</head>
+
+<body>
+
+    <div class="formDiv">
+        <h2 align="center" style="color:rgb(50, 19, 190);font-weight:bold;">Prediction: {{ msg }}</h2>
+        <form id="dataForm">
+            {% csrf_token %}
+            <center>
+
+                <label>Lines of code:</label>
+                <input type="text" id="loc" name="Lines of code" required><br>
+
+                <label>Cyclomatic complexity:</label>
+                <input type="text" id="v_g" name="Cyclomatic complexity" required><br>
+
+                <label>Essential complexity:</label>
+                <input type="text" id="ev_g" name="Essential complexity" required><br>
+
+                <label>Design complexity:</label>
+                <input type="text" id="iv_g" name="Design complexity" required><br>
+
+                <label>Program length:</label>
+                <input type="text" id="n" name="Program length" required><br>
+
+                <label>Program volume:</label>
+                <input type="text" id="v" name="Program volume" required><br>
+
+                <label>Program level:</label>
+                <input type="text" id="l" name="Program level" required><br>
+
+                <label>Difficulty:</label>
+                <input type="text" id="d" name="Difficulty" required><br>
+
+                <label>Intelligence content:</label>
+                <input type="text" id="i" name="Intelligence content" required><br>
+
+                <label>Effort:</label>
+                <input type="text" id="e" name="Effort" required><br>
+
+                <label>Estimated Bugs:</label>
+                <input type="text" id="b" name="Estimated Bugs" required><br>
+
+                <label>Time:</label>
+                <input type="text" id="t" name="Time" required><br>
+
+                <label>Lines of Code containing only executable statements:</label>
+                <input type="text" id="lOCode" name="Lines of Code containing only executable statements" required><br>
+
+                <label>Lines of Comments:</label>
+                <input type="text" id="lOComment" name="Lines of Comments" required><br>
+
+                <label>Lines of Blank:</label>
+                <input type="text" id="lOBlank" name="Lines of Blank" required><br>
+            
+                <label>Total lines containing both code and comments:</label>
+                <input type="text" id="locCodeAndComment" name="Total lines containing both code and comments" required><br>
+            
+                <label>Unique Operators:</label>
+                <input type="text" id="uniq_Op" name="Unique Operators" required><br>
+
+                <label>Unique Operands:</label>
+                <input type="text" id="uniq_Opnd" name="Unique Operands" required><br>
+
+                <label>Total Operators:</label>
+                <input type="text" id="total_Op" name="Total Operators" required><br>
+
+                <label>Total Operands:</label>
+                <input type="text" id="total_Opnd" name="Total Operands" required><br>
+
+                <label>Branch Count:</label>
+                <input type="text" id="branchCount" name="branchCount" required><br>
+
+                <input type="submit" value="Submit">
+            </center>
+        </form>
+    </div>
+
+    <!-- Popup Modal -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="text-align: center;" id="predictionResult"></h2>
+            <p id="modalText"></p>
+            <button class="ok-button" id="okButton">OK</button>
+        </div>
+    </div>
+
+    <script>
+    document.getElementById('dataForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent normal submission
+
+        // Capture form data
+        var formData = new FormData(this);
+
+        // Simulated prediction logic
+        var isDefective = Math.random() < 0.5 ? "Defect" : "Not Defect";
+
+        // Display result at the top of the modal
+        document.getElementById('predictionResult').innerHTML = `<b>Prediction:</b> ${isDefective}`;
+
+        // Construct message for all input values
+        var resultText = "";
+        formData.forEach((value, key) => {
+            resultText += `<b>${key.replace(/_/g, " ")}:</b> ${value} <br>`;
+        });
+
+        document.getElementById('modalText').innerHTML = resultText;
+
+        // Show modal
+        document.getElementById('resultModal').style.display = "block";
+    });
+
+    // Close modal when clicking the close button
+    document.querySelector(".close").addEventListener("click", function() {
+        document.getElementById('resultModal').style.display = "none";
+    });
+
+    // Close modal & refresh page when clicking the OK button
+    document.getElementById('okButton').addEventListener("click", function() {
+        document.getElementById('resultModal').style.display = "none";
+        location.reload();  // Refreshes the page
+    });
+
+    </script>
+
+</body>
+</html>
+
+{% endblock %}
