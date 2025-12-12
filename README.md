@@ -109,13 +109,4 @@ Decision Tree	89%
 
 (Random Forest performed the best)
 
-👩‍💻 Author
-Likhitha Muddala
 
-GitHub: https://github.com/likhithamuddala
-
-⭐ Contributing
-Pull requests are welcome!
-
-📜 License
-This project is licensed under the MIT License.
