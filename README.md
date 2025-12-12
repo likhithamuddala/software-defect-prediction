@@ -36,9 +36,6 @@ project/
 │── Project Document.pdf
 │── README.md
 
-yaml
-Copy code
-
 ---
 
 ## 🧪 Machine Learning Models Used
@@ -53,8 +50,6 @@ The best performing model is saved as:
 
 ML_model.pkl
 
-yaml
-Copy code
 
 ---
 
@@ -64,8 +59,6 @@ Install the required packages:
 
 pip install -r requirements.txt
 
-yaml
-Copy code
 
 ### Main libraries:
 - Python 3.9+
@@ -88,20 +81,12 @@ bash
 Copy code
 cd software-defect-prediction/code
 Migrate database
-
-bash
-Copy code
 python manage.py migrate
 Run server
-
-bash
-Copy code
 python manage.py runserver
 Open in browser:
-
-cpp
-Copy code
 http://127.0.0.1:8000/
+
 📊 Features
 Admin & User login
 
@@ -123,9 +108,6 @@ SVM	92%
 Decision Tree	89%
 
 (Random Forest performed the best)
-
-🖼️ Screenshots
-(Add your UI screenshots here)
 
 👩‍💻 Author
 Likhitha Muddala
